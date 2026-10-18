@@ -48,7 +48,7 @@ module.exports = {
          let newsEmbed = new Discord.MessageEmbed()
       if(newsarg.length>1){
         search = newsarg[1];
-        await fetch(`https://newsapi.org/v2/everything?q=${search}${param1}&apiKey=7e06fb6b454d47f681b357e3c6d95406`)
+        await fetch(`https://newsapi.org/v2/everything?q=${search}${param1}&apiKey=${process.env.NEWS_API_KEY}`)
         .then(response => response.json())
         .then(news =>{
           fnews = news.articles
@@ -57,7 +57,7 @@ module.exports = {
         }).catch(err => console.log("error: "+err))
       }
       if(!args.length){
-        await fetch(`https://newsapi.org/v2/top-headlines?country=${pais}&apiKey=7e06fb6b454d47f681b357e3c6d95406`)
+        await fetch(`https://newsapi.org/v2/top-headlines?country=${pais}&apiKey=${process.env.NEWS_API_KEY}`)
         .then(response => response.json())
         .then(news =>{
           fnews = news.articles
